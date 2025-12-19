@@ -28,13 +28,29 @@ export const Experience = () => {
     },
   ];
 
-  const certifications = [
-    'Technology Job Simulation – Deloitte',
-    'Cloud Infrastructure Foundations Associate - Oracle',
-    'Introduction to Python – Coding Ninjas',
-    'Introduction to Cloud Computing – Coursera',
-    'Software Engineering – Coursera',
-  ];
+ const certifications = [
+  {
+    title: 'Technology Job Simulation – Deloitte',
+    link: 'https://drive.google.com/file/d/1-w9pA1T-0plxAuGs2jZIWZT11r25ZVYB/view',
+  },
+  {
+    title: 'Cloud Infrastructure Foundations Associate – Oracle',
+    link: 'https://drive.google.com/file/d/1YrOSgoCO6ShxgaZ3OX3Lx6y8BFnI7UH0/view',
+  },
+  {
+    title: 'Introduction to Python – Coding Ninjas',
+    link: 'https://drive.google.com/file/d/1o9CDEcSbtlI5FKT5xCAGNB2KfBN8443_/view',
+  },
+  {
+    title: 'Introduction to Cloud Computing – Coursera',
+    link: 'https://drive.google.com/file/d/1G3-BorTfq7DXUXvHZCgzlAOIDCyrXWOt/view',
+  },
+  {
+    title: 'Software Engineering – Coursera',
+    link: 'https://drive.google.com/file/d/1HWORsH0gsAcBtv2MdVYrHb59s7B3hlfu/view',
+  },
+];
+
 
   return (
     <section ref={ref} className="min-h-screen py-32 px-6 relative overflow-hidden">
@@ -119,18 +135,27 @@ export const Experience = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, x: 5 }}
-                className="bg-surface p-6 rounded-2xl border border-primary/10 cursor-pointer"
-              >
-                <p className="text-text-secondary font-medium">{cert}</p>
-              </motion.div>
-            ))}
+                <motion.a
+                  key={index}
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05, x: 5 }}
+                  className="bg-surface p-6 rounded-2xl border border-primary/10 cursor-pointer block hover:border-accent/40"
+                >
+                  <p className="text-text-secondary font-medium">
+                    {cert.title}
+                  </p>
+                  <span className="mt-2 inline-block text-sm text-accent opacity-80">
+                    View Certificate →
+                  </span>
+                </motion.a>
+              ))}
+
           </div>
         </motion.div>
       </div>
